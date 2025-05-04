@@ -1,25 +1,35 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 function SkillCard({ title, percentage }) {
   const [progress, setProgress] = useState(0)
+  const controls = useAnimation()
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  })
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress(percentage)
-    }, 100)
+    if (inView) {
+      // Start the animation when the component is in view
+      const timer = setTimeout(() => {
+        setProgress(percentage)
+        controls.start({ width: `${percentage}%` })
+      }, 300)
 
-    return () => clearTimeout(timer)
-  }, [percentage])
+      return () => clearTimeout(timer)
+    }
+  }, [inView, percentage, controls])
 
   return (
     <motion.div
       className="skill-card"
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.03 }}
     >
@@ -28,7 +38,7 @@ function SkillCard({ title, percentage }) {
         <motion.div
           className="skill-progress"
           initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
+          animate={controls}
           transition={{ duration: 1, ease: "easeOut" }}
         ></motion.div>
       </div>

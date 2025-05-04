@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { NavLink } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Handle scroll effect
   useEffect(() => {
@@ -22,64 +24,90 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Close mobile menu when clicking a link
-  const handleLinkClick = () => {
-    setIsOpen(false)
+  // Handle navigation
+  const handleNavigation = (path, e) => {
+    e.preventDefault() // Prevent default link behavior
+    e.stopPropagation() // Stop event propagation
+
+    setIsOpen(false) // Close mobile menu
+
+    // Only navigate if we're not already on this path
+    if (location.pathname !== path) {
+      // Use setTimeout to ensure any cleanup happens before navigation
+      setTimeout(() => {
+        navigate(path)
+      }, 0)
+    }
+  }
+
+  // Check if a path is active
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/"
+    }
+    return location.pathname === path
   }
 
   return (
     <header className={`navbar ${scrolled ? "navbar-scrolled" : "navbar-transparent"}`}>
       <div className="container navbar-container">
         {/* Logo */}
-        <NavLink to="/" className="navbar-logo" end>
-          <span className="text-white">THE   </span>
+        <a href="/" className="navbar-logo" onClick={(e) => handleNavigation("/", e)}>
+          <span className="text-white">THE </span>
           <span className="text-pink">MOSOT</span>
-        </NavLink>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="navbar-nav">
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          <a
+            href="/"
+            className={isActive("/") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/", e)}
+          >
+            Home
+          </a>
+          <a
+            href="/about"
+            className={isActive("/about") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/about", e)}
           >
             About
-          </NavLink>
-          <NavLink
-            to="/skills"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          </a>
+          <a
+            href="/skills"
+            className={isActive("/skills") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/skills", e)}
           >
             Skills
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          </a>
+          <a
+            href="/projects"
+            className={isActive("/projects") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/projects", e)}
           >
             Projects
-          </NavLink>
-          <NavLink
-            to="/certificates"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          </a>
+          <a
+            href="/certificates"
+            className={isActive("/certificates") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/certificates", e)}
           >
             Certificates
-          </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          </a>
+          <a
+            href="/blog"
+            className={isActive("/blog") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/blog", e)}
           >
             Blog
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "navbar-nav-item active-nav-item" : "navbar-nav-item")}
-            onClick={handleLinkClick}
+          </a>
+          <a
+            href="/contact"
+            className={isActive("/contact") ? "navbar-nav-item active-nav-item" : "navbar-nav-item"}
+            onClick={(e) => handleNavigation("/contact", e)}
           >
             Contact
-          </NavLink>
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -94,24 +122,31 @@ function Navbar() {
 
       {/* Mobile Navigation */}
       <div className={`navbar-mobile-menu ${isOpen ? "open" : ""}`}>
-        <NavLink to="/about" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        <a href="/" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/", e)}>
+          Home
+        </a>
+        <a href="/about" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/about", e)}>
           About
-        </NavLink>
-        <NavLink to="/skills" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        </a>
+        <a href="/skills" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/skills", e)}>
           Skills
-        </NavLink>
-        <NavLink to="/projects" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        </a>
+        <a href="/projects" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/projects", e)}>
           Projects
-        </NavLink>
-        <NavLink to="/certificates" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        </a>
+        <a
+          href="/certificates"
+          className="navbar-mobile-nav-item"
+          onClick={(e) => handleNavigation("/certificates", e)}
+        >
           Certificates
-        </NavLink>
-        <NavLink to="/blog" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        </a>
+        <a href="/blog" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/blog", e)}>
           Blog
-        </NavLink>
-        <NavLink to="/contact" className="navbar-mobile-nav-item" onClick={handleLinkClick}>
+        </a>
+        <a href="/contact" className="navbar-mobile-nav-item" onClick={(e) => handleNavigation("/contact", e)}>
           Contact
-        </NavLink>
+        </a>
       </div>
     </header>
   )

@@ -5,10 +5,13 @@ import { useEffect, useRef, useState } from "react"
 function GridPattern() {
   const canvasRef = useRef(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const animationFrameRef = useRef()
+  const animationFrameRef = useRef(null)
   const pointsRef = useRef([])
+  const mountedRef = useRef(true)
 
   useEffect(() => {
+    mountedRef.current = true
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -46,6 +49,8 @@ function GridPattern() {
     }
 
     const resizeCanvas = () => {
+      if (!mountedRef.current || !canvas) return
+
       const { width: newWidth, height: newHeight } = canvas.getBoundingClientRect()
       width = newWidth
       height = newHeight
@@ -67,6 +72,8 @@ function GridPattern() {
     }
 
     const handleMouseMove = (e) => {
+      if (!mountedRef.current) return
+
       const rect = canvas.getBoundingClientRect()
       setMousePosition({
         x: e.clientX - rect.left,
@@ -75,17 +82,19 @@ function GridPattern() {
     }
 
     const handleTouchMove = (e) => {
-      if (e.touches.length > 0) {
-        const rect = canvas.getBoundingClientRect()
-        setMousePosition({
-          x: e.touches[0].clientX - rect.left,
-          y: e.touches[0].clientY - rect.top,
-        })
-      }
+      if (!mountedRef.current || e.touches.length === 0) return
+
+      const rect = canvas.getBoundingClientRect()
+      setMousePosition({
+        x: e.touches[0].clientX - rect.left,
+        y: e.touches[0].clientY - rect.top,
+      })
     }
 
     // Update grid points based on mouse position
     const updatePoints = () => {
+      if (!mountedRef.current) return
+
       const { x: mouseX, y: mouseY } = mousePosition
 
       pointsRef.current.forEach((point) => {
@@ -116,7 +125,7 @@ function GridPattern() {
     }
 
     const drawGrid = () => {
-      if (!ctx || !canvas) return
+      if (!mountedRef.current || !ctx || !canvas) return
 
       // Clear canvas
       ctx.clearRect(0, 0, width, height)
@@ -133,6 +142,8 @@ function GridPattern() {
         ctx.beginPath()
         for (let x = 0; x < cols; x++) {
           const index = y * cols + x
+          if (index >= pointsRef.current.length) continue
+
           const point = pointsRef.current[index]
 
           if (x === 0) {
@@ -149,6 +160,8 @@ function GridPattern() {
         ctx.beginPath()
         for (let y = 0; y < rows; y++) {
           const index = y * cols + x
+          if (index >= pointsRef.current.length) continue
+
           const point = pointsRef.current[index]
 
           if (y === 0) {
@@ -160,10 +173,15 @@ function GridPattern() {
         ctx.stroke()
       }
 
-      animationFrameRef.current = requestAnimationFrame(drawGrid)
+      if (mountedRef.current) {
+        animationFrameRef.current = requestAnimationFrame(drawGrid)
+      }
     }
 
+    // Initial setup
     resizeCanvas()
+
+    // Event listeners
     window.addEventListener("resize", resizeCanvas)
     canvas.addEventListener("mousemove", handleMouseMove)
     canvas.addEventListener("touchmove", handleTouchMove, { passive: true })
@@ -174,19 +192,46 @@ function GridPattern() {
     // Start animation loop
     animationFrameRef.current = requestAnimationFrame(drawGrid)
 
+    // Cleanup function
     return () => {
+      mountedRef.current = false
+
       window.removeEventListener("resize", resizeCanvas)
-      canvas.removeEventListener("mousemove", handleMouseMove)
-      canvas.removeEventListener("touchmove", handleTouchMove)
+      if (canvas) {
+        canvas.removeEventListener("mousemove", handleMouseMove)
+        canvas.removeEventListener("touchmove", handleTouchMove)
+      }
+
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
       }
+
+      // Clear the canvas on unmount
+      if (ctx && canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+      }
+
+      // Reset points
+      pointsRef.current = []
     }
-  }, [mousePosition])
+  }, []) // Keep dependency array empty to prevent re-renders
+
+  // Handle mouse position updates separately
+  const handleMouseMove = (e) => {
+    if (!canvasRef.current || !mountedRef.current) return
+
+    const rect = canvasRef.current.getBoundingClientRect()
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    })
+  }
 
   return (
     <canvas
       ref={canvasRef}
+      onMouseMove={handleMouseMove}
       style={{
         position: "absolute",
         top: 0,
@@ -194,6 +239,7 @@ function GridPattern() {
         width: "100%",
         height: "100%",
         background: "black",
+        zIndex: 0, // Ensure it's behind content
       }}
     />
   )

@@ -32,12 +32,12 @@ function SkillsPage() {
             Skills & Expertise
           </motion.h2>
           <div className="skills-grid">
-            <SkillCard title="Frontend Development" percentage={90} />
-            <SkillCard title="UI/UX Design" percentage={85} />
-            <SkillCard title="Backend Development" percentage={75} />
-            <SkillCard title="Mobile Development" percentage={70} />
-            <SkillCard title="3D Modeling" percentage={65} />
-            <SkillCard title="Motion Graphics" percentage={80} />
+            <SkillCard title="Frontend Development" percentage={70} />
+            <SkillCard title="UI/UX Design" percentage={65} />
+            <SkillCard title="Backend Development" percentage={85} />
+            <SkillCard title="Mobile Development" percentage={60} />
+            <SkillCard title="Layout Design" percentage={85} />
+            <SkillCard title="Video Editing" percentage={90} />
           </div>
 
           <motion.h2

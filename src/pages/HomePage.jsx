@@ -1,6 +1,4 @@
 "use client"
-
-import { NavLink } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
@@ -26,6 +24,15 @@ function HomePage() {
 
     return () => clearInterval(interval)
   }, [titles.length])
+
+  // Handle navigation with custom handler
+  const handleNavigation = (e, path) => {
+    e.preventDefault()
+    // Use the history API directly for navigation
+    window.history.pushState({}, "", path)
+    // Dispatch a navigation event
+    window.dispatchEvent(new PopStateEvent("popstate"))
+  }
 
   return (
     <PageTransition>
@@ -63,8 +70,7 @@ function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-          >
-          </motion.p>
+          ></motion.p>
 
           <motion.div
             className="flex gap-4"
@@ -72,12 +78,12 @@ function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <NavLink to="/contact" className="btn btn-primary">
+            <a href="/contact" className="btn btn-primary" onClick={(e) => handleNavigation(e, "/contact")}>
               Get in touch <ArrowRight size={18} />
-            </NavLink>
-            <NavLink to="/projects" className="btn btn-outline">
+            </a>
+            <a href="/projects" className="btn btn-outline" onClick={(e) => handleNavigation(e, "/projects")}>
               View projects
-            </NavLink>
+            </a>
           </motion.div>
         </div>
       </section>
