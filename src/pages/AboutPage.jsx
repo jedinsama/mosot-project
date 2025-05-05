@@ -3,6 +3,7 @@ import { Download, Github, Linkedin, Facebook, Instagram } from "lucide-react"
 import { motion } from "framer-motion"
 import PageTransition from "../components/PageTransition"
 import profileImage from "../assets/profile.png"
+import cvFile from "../assets/CVMosot.png"
 
 function AboutPage() {
   return (
@@ -38,15 +39,15 @@ function AboutPage() {
               With a background in both design and development, I bring a logical perspective to every project, ensuring
               both aesthetics and functionality are prioritized.
             </p>
-            <div className="about-actions">
+            <div className="flex gap-4">
               <motion.a
-                href="/CVMosot.png"
-                download="custom_filename.png"
-                className="btn btn-primary about-cv-btn"
+                href={cvFile}
+                download="CVMosot.png"
+                className="btn btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Download size={18} /> <span>Download CV</span>
+                <Download size={18} /> Download CV
               </motion.a>
               <div className="social-links">
                 <motion.a
