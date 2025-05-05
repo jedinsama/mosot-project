@@ -64,9 +64,9 @@ function SkillsPage() {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <h3 className="specialization-title">Responsive Design</h3>
+              <h3 className="specialization-title">Software Development</h3>
               <p className="specialization-text">
-                Creating websites that provide optimal viewing experience across a wide range of devices.
+                Building applications from front-end to back-end using frameworks like React, Node.js, Django, etc.
               </p>
             </motion.div>
             <motion.div
