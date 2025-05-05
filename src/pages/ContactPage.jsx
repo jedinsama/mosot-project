@@ -22,7 +22,7 @@ function ContactPage() {
           >
             <h2 className="section-title">Contact Me</h2>
             <p className="contact-text">
-              Collaboration? Working Hit me up by filling the form and I'll get back to you as soon as possible.
+              Collaboration? Working together? Hit me up by filling the form and I'll get back to you as soon as possible.
             </p>
             <div className="space-y-6">
               <motion.div
