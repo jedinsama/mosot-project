@@ -74,9 +74,9 @@ function SkillsPage() {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <h3 className="specialization-title">User Experience</h3>
+              <h3 className="specialization-title">Layout Designing</h3>
               <p className="specialization-text">
-                Designing intuitive interfaces that enhance user satisfaction and engagement.
+                Specializes in designing layouts using apps like Photoshop, Paint.net and Adobe Illustrator.
               </p>
             </motion.div>
             <motion.div
@@ -104,9 +104,9 @@ function SkillsPage() {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <h3 className="specialization-title">Accessibility</h3>
+              <h3 className="specialization-title">Video Editing</h3>
               <p className="specialization-text">
-                Ensuring digital products are usable by people with a wide range of abilities.
+                Has been a forte since Junior High. Specializes in editing using Sony Vegas and Premiere.
               </p>
             </motion.div>
           </motion.div>
