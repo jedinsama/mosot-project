@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Send } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -21,14 +22,30 @@ function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus(null)
 
-    // Simulate form submission
     try {
-      // In a real application, you would send the form data to your server
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // Prepare the template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: "jmosot2002@gmail.com",
+      }
+
+      // Send the email using EmailJS
+      await emailjs.send(
+        "service_e7ztv6k", // You'll need to replace this with your actual service ID
+        "template_q2i3wwj", // You'll need to replace this with your actual template ID
+        templateParams,
+        "DXHQ1zdb64uoWhWVl", // You'll need to replace this with your actual public key
+      )
+
       setSubmitStatus("success")
       setFormData({ name: "", email: "", subject: "", message: "" })
     } catch (error) {
+      console.error("Error sending email:", error)
       setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
