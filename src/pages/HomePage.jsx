@@ -7,7 +7,7 @@ import PageTransition from "../components/PageTransition"
 
 function HomePage() {
   // Array of different titles to cycle through
-  const titles = ["UI/UX DESIGNER", "WEB DEVELOPER", "FRONTEND DESIGNER"]
+  const titles = ["UI/UX DESIGNER", "WEB DEVELOPER", "BACKEND DEVELOPER"]
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)

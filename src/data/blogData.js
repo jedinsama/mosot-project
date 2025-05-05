@@ -51,7 +51,7 @@ export const blogPostsData = [
     imageUrl: day7,
     url: "#",
     content:
-      "Day 1 of the tour. And do you think I'm already in Manila? No no no as we are still in Casa Mosot chilling around and preparing stuffs as we head into airport for our flight. Now I hate to admit but we only had half of fun as we arrived a tad bit late for day 1. I missed the Intramuros visit but managed to have fun strolling around in SM Megamall wasting around money to buy some gacha stuffs. And after that? We've arrived in the dormitory to relax and talk to pass by the day.",
+      "And do you think I’m already in Manila? Nope—not yet! We’re still at Casa Mosot, chilling and preparing our stuff before heading to the airport for our flight.Now, I hate to admit it, but we only had half the fun since we arrived a bit late for Day 1. I missed the Intramuros visit, but I still managed to enjoy strolling around SM Megamall, wasting money on some gacha stuff. And after that? We finally arrived at the dormitory to relax and chat as we wrapped up the day.",
     images: [
       { url: day1pic1, alt: "Airport waiting area with Gate 2 sign" },
       { url: day1pic2, alt: "Street view with buildings and parked car" },
@@ -66,7 +66,7 @@ export const blogPostsData = [
     imageUrl: day1,
     url: "#",
     content:
-      "Day 2 was one heck of a journey. We visited Subic Museum out and admired some paintings that depict the revolution and history of certain events in the Philippines. After that, we checked the SBMA Seaport Department. Seeing how they manage the vessel traffic control is just shocking especially how their systems look. You just can't help but be amazed as to how they operate. Next is the SSBMA Law Enforcement Department where they are sentinels of everything in Subic. They keep watch on any certain uncertainties that happens in not only their vicinity but also the whole Subic. Damn its pretty terrifying to think how they keep an eye on everything there.",
+      "We visited the Subic Museum and admired some powerful paintings that depict the revolution and significant events in Philippine history. After that, we checked out the SBMA Seaport Department. Seeing how they manage vessel traffic control was mind-blowing—especially the way their systems look and operate. You just can’t help but be amazed by how efficiently everything runs. Next was the SBMA Law Enforcement Department, the sentinels of Subic. They keep watch over not just their immediate area but the entire Subic region. It’s honestly kind of terrifying to think about how closely they monitor everything happening there.",
     images: [
       { url: day2pic1, alt: "Painting depicting indigenous people and daily life" },
       { url: day2pic2, alt: "Communications tower against blue sky" },
@@ -81,7 +81,7 @@ export const blogPostsData = [
     imageUrl: day2,
     url: "#",
     content:
-      "Like in Day 2, we visited Museums like the National Museum of Natural History. I remember visiting here when I was a kid and still amazed as to how they preserve the remains and taxidermies of animals. The way they give poses to each species is pretty cool. Next is we visited the Museum of Manuel Quezon where we witnessed every single thing Quezon had. From old newspaper, garments of his, mementos, old collections, belongings of his wife and even his deathbed. Its pretty phenomenal to imagine how they manage to create a giant memorial of where he formerly resides in order to give honor to him",
+      "Just like in Day 2, we visited more museums—this time, starting with the National Museum of Natural History. I remember coming here as a kid, and I’m still amazed by how well they preserve the remains and taxidermy of animals. The way they pose each species is honestly pretty cool. Next, we visited the Museum of Manuel Quezon, where we saw just about everything connected to him—old newspapers, his garments, mementos, personal collections, belongings of his wife, and even his actual deathbed. It’s pretty phenomenal to think about how they managed to turn his former residence into a massive memorial to honor his legacy.",
     images: [
       { url: day3pic1, alt: "Whale skeleton hanging from museum ceiling" },
       { url: day3pic2, alt: "Quezon Memorial Shrine with tall white pillars" },
@@ -96,7 +96,7 @@ export const blogPostsData = [
     imageUrl: day3,
     url: "#",
     content:
-      "In day 4, we visited some awe-struck place like the Bangko Sentral ng Pilipinas. Now unfortunately, we didn't have any photos here as we are not allowed to bring phones when entering. It's a bummer how I can't show photos but all I can say about Bangko Sentral is that it is a top-notch facility for money production. Next is we visited the Hytec Power where they allowed us to interact with their creations and IoT. That itself is a great experience as we get to test their hardworks.",
+      "On Day 4, we visited some awe-inspiring places—starting with the Bangko Sentral ng Pilipinas. Unfortunately, we weren’t allowed to bring our phones inside, so we don’t have any photos from the visit. It’s a bit of a bummer not being able to share pictures, but all I can say is that Bangko Sentral is a top-notch facility when it comes to money production. Next, we headed to Hytec Power, where they gave us the chance to interact with their innovations and IoT systems. That alone was a great experience, as we actually got to test and explore the results of their hard work.",
     images: [
       { url: day4pic1, alt: "Engine or mechanical system with colorful components" },
       { url: day4pic2, alt: "AC DRIVE Mechatronics Servicing control panel" },

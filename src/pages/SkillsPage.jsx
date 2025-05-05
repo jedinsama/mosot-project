@@ -35,7 +35,7 @@ function SkillsPage() {
             <SkillCard title="Frontend Development" percentage={70} />
             <SkillCard title="UI/UX Design" percentage={65} />
             <SkillCard title="Backend Development" percentage={85} />
-            <SkillCard title="Mobile Development" percentage={60} />
+            <SkillCard title="Debugging" percentage={80} />
             <SkillCard title="Layout Design" percentage={85} />
             <SkillCard title="Video Editing" percentage={90} />
           </div>
