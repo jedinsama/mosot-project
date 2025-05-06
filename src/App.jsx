@@ -12,6 +12,7 @@ import ProjectsPage from "./pages/ProjectsPage"
 import CertificatesPage from "./pages/CertificatesPage"
 import ContactPage from "./pages/ContactPage"
 import BlogPage from "./pages/BlogPage"
+import MusicPlayer from "./components/MusicPlayer"
 import "./styles/main.css"
 
 function App() {
