@@ -3,9 +3,12 @@
 import { Award } from "lucide-react"
 import { motion } from "framer-motion"
 
-function CertificateCard({ title, issuer, date, description }) {
+function CertificateCard({ title, issuer, date, description, url }) {
   return (
-    <motion.div
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="certificate-card"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +34,7 @@ function CertificateCard({ title, issuer, date, description }) {
           <p className="certificate-description">{description}</p>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   )
 }
 
