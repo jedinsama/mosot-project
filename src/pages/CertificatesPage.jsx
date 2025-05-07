@@ -20,7 +20,7 @@ function CertificatesPage() {
           <div className="certificates-grid">
           <CertificateCard
               title="Data Analyisis with Python"
-              issuer="FreeCodeCamp"
+              issuer="freecodecamp"
               date="2025"
               description="Learned how to analyze and visualize data using Python libraries like Pandas and NumPy,"
               url="https://www.freecodecamp.org/certification/jadenmosot/data-analysis-with-python-v7"
@@ -82,6 +82,13 @@ function CertificatesPage() {
               url="https://certificates.simplicdn.net/share/8236316_85560111746513899487.pdf"
             />            
             <CertificateCard
+              title="Machine Learning with Python"
+              issuer="freecodecamp"
+              date="2025"
+              description="Learned how to build and evaluate machine learning models using Python libraries covering both supervised and unsupervised learning techniques."
+              url="https://www.freecodecamp.org/certification/jadenmosot/machine-learning-with-python-v7"
+            />           
+            <CertificateCard
             title="PMP Basics"
             issuer="Simplilearn"
             date="2025"
@@ -101,6 +108,13 @@ function CertificatesPage() {
         date="2025"
         description="Learned the basics of neural networks, activation functions, and how to build simple models using frameworks like TensorFlow or Keras."
         url="https://certificates.simplicdn.net/share/8296324_85560111746514475546.pdf"
+      />
+             <CertificateCard
+        title="Python for Beginners"
+        issuer="Simplilearn"
+        date="2025"
+        description="Learned the fundamentals and functionality of Python."
+        url="https://certificates.simplicdn.net/share/8299184_85560111746514349681.pdf"
       />
           </div>
         </div>
