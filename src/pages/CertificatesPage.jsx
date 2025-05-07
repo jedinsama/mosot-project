@@ -18,12 +18,26 @@ function CertificatesPage() {
             Certificates
           </motion.h2>
           <div className="certificates-grid">
+          <CertificateCard
+              title="Data Analyisis with Python"
+              issuer="FreeCodeCamp"
+              date="2025"
+              description="Learned how to analyze and visualize data using Python libraries like Pandas and NumPy,"
+              url="https://www.freecodecamp.org/certification/jadenmosot/data-analysis-with-python-v7"
+            />
             <CertificateCard
               title="Microsoft Copilot Studio"
               issuer="Simplilearn"
               date="2025"
               description="Learned to build and customize AI-powered copilots using Microsoft's low-code tools."
               url="https://certificates.simplicdn.net/share/8195573_85560111744736114793.pdf"
+            />
+            <CertificateCard
+              title="Getting Started with Machine Learning Algorithms"
+              issuer="Simplilearn"
+              date="2025"
+              description="learned the fundamentals of machine learning, including key algorithms like linear regression and clustering."
+              url="https://certificates.simplicdn.net/share/8226928_85560111746631650765.pdf"
             />
             <CertificateCard
               title="Generative AI For Beginners"
