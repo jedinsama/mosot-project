@@ -36,8 +36,22 @@ function CertificatesPage() {
               title="Getting Started with Machine Learning Algorithms"
               issuer="Simplilearn"
               date="2025"
-              description="learned the fundamentals of machine learning, including key algorithms like linear regression and clustering."
+              description="Learned the fundamentals of machine learning, including key algorithms like linear regression and clustering."
               url="https://certificates.simplicdn.net/share/8226928_85560111746631650765.pdf"
+            />
+            <CertificateCard
+              title="Introduction to CISSP Security Assessment & Testing and Security Operations"
+              issuer="Simplilearn"
+              date="2025"
+              description="Learned the core principles of security assessment, testing, and operations, including risk management, security controls evaluation, and incident response processes."
+              url="https://certificates.simplicdn.net/share/8220179_85560111746677117172.pdf"
+            />
+            <CertificateCard
+              title="Tensorflow for Beginners"
+              issuer="Simplilearn"
+              date="2025"
+              description="Learned the basics of building and training machine learning models using TensorFlow, including creating neural networks and working with tensors."
+              url="https://certificates.simplicdn.net/share/8221884_85560111746677216913.pdf"
             />
             <CertificateCard
               title="Generative AI For Beginners"
